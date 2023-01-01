@@ -1,3 +1,41 @@
+<?php
+
+// Connect to the database
+$host = 'localhost';
+$user = 'root';
+$password = '';
+$dbname = 'billing info';
+
+$conn = mysqli_connect($host, $user, $password, $dbname);
+
+// Check connection
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Get the form data
+    $username = mysqli_real_escape_string($conn, $_POST['username']);
+    $password = mysqli_real_escape_string($conn, $_POST['password']);
+
+    // Check if the user is present in the users table
+    $query = "SELECT * FROM users WHERE username='$username' AND password='$password'";
+    $result = mysqli_query($conn, $query);
+
+    if (mysqli_num_rows($result) > 0) {
+        // User is present, login successful
+        session_start();
+        $_SESSION['username'] = $username;
+        header('Location: home.php');
+        exit;
+    } else {
+        // User is not present, login failed
+        $error = 'Invalid username or password';
+    }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
