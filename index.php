@@ -22,11 +22,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Check if the user is present in the users table
       $query = "SELECT * FROM users WHERE email='$email' AND password='$password'";
       $result = mysqli_query($conn, $query);
-
+      
       if (mysqli_num_rows($result) > 0) {
           // User is present, login successful
+          $user_info = mysqli_fetch_assoc($result);
           session_start();
           $_SESSION['email'] = $email;
+          $_SESSION['id']=$user_info['users_id'];
           header('Location: home.php');
           exit;
       } else {
@@ -39,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $name = mysqli_real_escape_string($conn, $_POST['name']);
       $query = "SELECT * FROM users WHERE email='$email'";
       $result = mysqli_query($conn, $query);
-
+      
       if (mysqli_num_rows($result) > 0) {
           // email is already exsists
           $error = 'email already exsists';
@@ -62,14 +64,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 ?>
 
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="./index.css" />
-    <script src="./index.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="./css/index.css" />
+    <script src="./js/index.js" defer></script>
     <title>Document</title>
 </head>
 <body>
