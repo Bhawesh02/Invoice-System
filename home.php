@@ -1,4 +1,3 @@
-<!--
 <?php
 session_start();
 function destroySesson(){
@@ -10,7 +9,6 @@ if (isset($_GET['call_function'])) {
   destroySesson();
 }
 ?>
--->
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -22,6 +20,7 @@ if (isset($_GET['call_function'])) {
       href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
       rel="stylesheet"
     />
+    <script src="https://kit.fontawesome.com/36bed4b74a.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="./css/home.css" />
     <script src="./js/destroySesson.js" defer></script>
     <title>Homme page</title>
@@ -46,10 +45,38 @@ if (isset($_GET['call_function'])) {
             data-visible="false"
             class="primary-navigation flex"
           >
+            <li><span class="user_info"> <i class="fa-solid fa-user"></i> <?php echo $_SESSION['name']?></span></li>
             <li><a href="?call_function=1">Sign Out</a></li>
           </ul>
         </nav>
       </div>
     </header>
+    <section>
+      <div class="container">
+        <div class="card">
+          <div class="content">
+            <div class="contentBx">
+              <h3>Products<br /><span>nice</span></h3>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="content">
+            <div class="contentBx">
+              <h3>Customers<br /><span>nice</span></h3>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="content">
+            <div class="contentBx">
+              <h3>Invoice<br /><span>nice</span></h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </body>
 </html>

@@ -28,6 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           $user_info = mysqli_fetch_assoc($result);
           session_start();
           $_SESSION['email'] = $email;
+          $_SESSION['name'] = $user_info['name'];
           $_SESSION['id']=$user_info['users_id'];
           header('Location: home.php');
           exit;
@@ -52,6 +53,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
               // Signup successful, login the user
               session_start();
               $_SESSION['email'] = $email;
+              $_SESSION['name'] = $user_info['name'];
+              $_SESSION['id']=$user_info['users_id'];
               header('Location: home.php');
               exit;
           } else {
