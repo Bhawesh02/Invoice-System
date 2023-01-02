@@ -1,0 +1,245 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+  }
+  .flex {
+    display: flex;
+    gap: var(--gap,5ex);
+  }
+  header {
+    position: absolute;
+    z-index: 5;
+    width: 100%;
+    height: 80px;
+    position: relative;
+    background: linear-gradient(#141e30, #243b55);
+
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(20px);
+    align-items: center;
+    
+  }
+  
+  header .inner {
+    
+    align-items: center;
+    justify-content: space-between;
+  }
+  header .logo {
+    margin: 1rem;
+  }
+  
+  .logo h1 {
+    color: whitesmoke;
+    height: 100%;
+    font-size: 35px;
+    font-family: "Montserrat";
+    font-weight: normal;
+  }
+  .logo h1 span {
+    font-weight: bold;
+  }
+  header button span, .mobile-nav-toggle{
+    display: none;
+  }
+  
+  .primary-navigation{
+    background: hsl(0 0% 100% / 0.1);
+    backdrop-filter: blur(5rem);
+    padding: 1rem;
+    margin-right: 5rem;
+    border-radius: 11px;
+  }
+  nav li a ,.user_info {
+    color: whitesmoke;
+    height: 100%;
+    font-size: 16px;
+    font-family: "Montserrat";
+    font-weight: 600;
+    transition: 0.5s;
+  }
+  .user_info i{
+    padding-right: 10px;
+  }
+  nav li a:hover{
+    letter-spacing: 2px;
+    transition: 1s;
+  }
+  
+  body{
+    justify-content: center;
+    align-items: center;
+  }
+  :root{
+    --font-color:#555;
+    --font-hover-color:orange;
+  }
+  .form-container{
+    width:500px;
+    box-shadow: 0 15px 35px rgba(50,50,93,.1),0 5px 15px rgba(0,0,0,.07);
+    padding:2em;
+    background-color:#fff;
+  }
+  .form-group{
+    margin-bottom:1.5em;
+    transition:all .3s;
+  }
+  .form-label{
+    font-size:.75em;
+    color:var(--font-color);
+    display:block;
+    opacity:0;
+    transition: all .3s;
+    transform:translateX(-50px);
+  }
+  .form-control{
+    box-shadow:none;
+    
+    border-radius:0;
+    border-color:#ccc;
+    border-style:none none solid none;
+    width:100%;
+    font-size:1.25em;
+    transition:all .6s;
+  }
+  .underline{
+    text-decoration:underline;
+  }
+  p.form-control{
+    border-style: none;
+    font-size: 16px;
+    color:rgb(51, 50, 50) ; 
+    transition: 0.5s;
+  }
+  .add_more:hover,.add_less:hover{
+    cursor:pointer;
+    color:black;
+    transition: 0.5s;
+    letter-spacing:1.5px;
+  }
+  .add_less{
+    transition: 0.5s;
+    
+  }
+  p span.add_more{
+    float: right;
+    transition: 0.5s;
+  }
+  option{
+    color:black;
+  }
+  .form-control::placeholder,select:invalid{
+    color:#aaa ; 
+  }
+  .form-control:focus{
+    box-shadow:none;
+    border-color:var(--font-hover-color);
+    outline:none;
+  }
+  .form-group:focus-within{
+    transform:scale();
+  }
+  .p-2,.r-2,.p-3,.r-3,.p-4,.r-4,#add-more-2,#add-more-3,.add_less{
+    display:none;
+  }
+  .form-control:invalid:focus{
+    border-color:red;
+  }
+  .form-control:valid:focus{
+    border-color:green;
+  }
+  
+  .submit_btn{
+    background: 0 0 #fff;
+    border:1px solid #aaa;
+    border-radius:3px;
+    color:var(--font-color);
+    font-size:1em;
+    padding:10 50px;
+    text-transform:uppercase;
+  }
+  .submit_btn:hover{
+    border-color:var(--font-hover-color);
+    color:var(--font-hover-color);
+    cursor:pointer;
+  }
+  textarea{
+    resize:none;
+  }
+  
+  
+  
+  .focused > .form-label{
+    opacity:1;
+    transform:translateX(0px);
+  
+  }
+  
+  .modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    padding-top: 100px; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.9);
+}
+#popup{
+  display: none;
+  z-index: 999999999;
+}
+#add_row_popup,#edit_row_popup{
+    display: none;
+}
+/* Modal Content (image) */
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+}
+.modal-content {    
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+    from {-webkit-transform:scale(0)} 
+    to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+    from {transform:scale(0)} 
+    to {transform:scale(1)}
+}
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+@media  (max-width: 700px){
+    .modal-content {
+        width: 100%;
+    }
+}
