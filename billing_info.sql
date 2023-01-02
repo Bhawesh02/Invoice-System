@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 02, 2023 at 08:37 AM
+-- Generation Time: Jan 02, 2023 at 09:47 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -33,6 +33,13 @@ CREATE TABLE `product` (
   `price` decimal(10,2) NOT NULL,
   `users_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `product`
+--
+
+INSERT INTO `product` (`product_id`, `name`, `price`, `users_id`) VALUES
+(1, 'Soap', '10.00', 1);
 
 -- --------------------------------------------------------
 
@@ -80,7 +87,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `users`
