@@ -25,7 +25,7 @@ include 'Sesson_end.php';
         <div class="card" onclick="redirect('product')">
           <div class="content">
             <div class="contentBx">
-              <h3>Products<br /><span>nice</span></h3>
+              <h3>Products</h3>
             </div>
           </div>
         </div>
@@ -33,7 +33,7 @@ include 'Sesson_end.php';
         <div class="card" onclick="redirect('customer')">
           <div class="content">
             <div class="contentBx">
-              <h3>Customers<br /><span>nice</span></h3>
+              <h3>Customers</h3>
             </div>
           </div>
         </div>
@@ -41,7 +41,7 @@ include 'Sesson_end.php';
         <div class="card" onclick="redirect('invoice')">
           <div class="content">
             <div class="contentBx">
-              <h3>Invoice<br /><span>nice</span></h3>
+              <h3>Invoice</h3>
             </div>
           </div>
         </div>
