@@ -17,12 +17,13 @@ $customers[] = $row; } }
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   // Get the form data
   $name = mysqli_real_escape_string($conn, $_POST['name']);
+  $email = mysqli_real_escape_string($conn, $_POST['email']);
+  $pno = mysqli_real_escape_string($conn, $_POST['phone_number']);
 
-  $price = mysqli_real_escape_string($conn, $_POST['price']);
   if(isset($_POST["add_customer"]))
   {
     
-    $query = "INSERT INTO customer (name,price, users_id) VALUES ('$name','$price', '$currentuser')";
+    $query = "INSERT INTO customer (name,email, phone_number,users_id) VALUES ('$name','$email', '$pno','$currentuser')";
     if (mysqli_query($conn, $query)) {
       header('Location: customer.php');
       exit;
@@ -36,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
    
     
   $id = mysqli_real_escape_string($conn, $_POST['id']);
-  $query = "Update customer set name = '$name',price = '$price' where customer_id = '$id'";
+  $query = "Update customer set name = '$name',phone_number = '$pno',email = '$email' where customer_id = '$id'";
   if (mysqli_query($conn, $query)) {
     header('Location: customer.php');
     exit;
@@ -132,10 +133,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                   <input type="text" class="form-control" id="name" name="name" placeholder="Name *" tabindex="1" required>
               </div>
               <div class="form-group">
-                  <label for="price" class="form-label">MRP</label>
-                  <input type="number"  class="form-control" id="price" name="price" placeholder="MRP *"
-                  tabindex="2" required>
-              </div>
+                    <label for="email" class="form-label">Your Email</label>
+                    <input type="email" class="form-control " id="email" name="email" placeholder="Email *"  tabindex="2" required
+                        >
+                </div>
+              <div class="form-group">
+                    <label for="Phone_number" class="form-label">Phone Number</label>
+                    <input type="tel" onKeyDown="if(this.value.length==10 && event.keyCode!=8) return false;" class="form-control" id="phone_number" name="phone_number" placeholder="Phone Number *"
+                    tabindex="3" required>
+                </div>
               
               <div>
                   <button type="submit" name="add_customer" class="submit_btn">Add Procduct!</button>
@@ -149,18 +155,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           <form  method="POST" class="form">
           <div class="form-group">
                   <label for="id" class="form-label">customer No</label>
-                  <input type="text" class="form-control" id="edit_id"  placeholder="" tabindex="1" disabled>
+                  <input type="text" class="form-control" id="edit_id"  placeholder="" disabled>
                   <input name="id" id="edit_id_h" hidden>
               </div>
               <div class="form-group">
                   <label for="name" class="form-label">customer Name</label>
-                  <input type="text" class="form-control" id="edit_name" name="name" placeholder="Name *" tabindex="2" required>
+                  <input type="text" class="form-control" id="edit_name" name="name" placeholder="Name *" tabindex="1" required>
               </div>
               <div class="form-group">
-                  <label for="price" class="form-label">MRP</label>
-                  <input type="number"  class="form-control" id="edit_price" name="price" placeholder="MRP *"
-                  tabindex="3" required>
-              </div>
+                    <label for="email" class="form-label">Your Email</label>
+                    <input type="email" class="form-control " id="edit_email" name="email" placeholder="Email *"  tabindex="2" required
+                        >
+                </div>
+              <div class="form-group">
+                    <label for="Phone_number" class="form-label">Phone Number</label>
+                    <input type="tel" onKeyDown="if(this.value.length==10 && event.keyCode!=8) return false;" class="form-control" id="edit_phone_number" name="phone_number" placeholder="Phone Number *"
+                    tabindex="3" required>
+                </div>
               
               <div>
                   <button type="submit" name="edit_customer" class="submit_btn">Edit Procduct!</button>
