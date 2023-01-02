@@ -14,38 +14,15 @@ include 'Sesson_end.php';
     />
     <script src="https://kit.fontawesome.com/36bed4b74a.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="./css/home.css" />
-    <script src="./js/destroySesson.js" defer></script>
     <title>Homme page</title>
   </head>
   <body>
-    <header>
-      <div class="inner flex">
-        <div class="logo">
-          <h1><span>Company</span> name</h1>
-        </div>
-        <button
-          class="mobile-nav-toggle"
-          aria-controls="primary-navigation"
-          aria-expanded="false"
-        >
-          <span class="sr-only">Menu</span>
-        </button>
-
-        <nav>
-          <ul
-            id="primary-navigation"
-            data-visible="false"
-            class="primary-navigation flex"
-          >
-            <li><span class="user_info"> <i class="fa-solid fa-user"></i> <?php echo $_SESSION['name']?></span></li>
-            <li><a href="?call_function=1">Sign Out</a></li>
-          </ul>
-        </nav>
-      </div>
-    </header>
+    <?php
+    include 'header.php';
+    ?>
     <section>
       <div class="container">
-        <div class="card">
+        <div class="card" onclick="redirect('product')">
           <div class="content">
             <div class="contentBx">
               <h3>Products<br /><span>nice</span></h3>
@@ -53,7 +30,7 @@ include 'Sesson_end.php';
           </div>
         </div>
 
-        <div class="card">
+        <div class="card" onclick="redirect('customer')">
           <div class="content">
             <div class="contentBx">
               <h3>Customers<br /><span>nice</span></h3>
@@ -61,7 +38,7 @@ include 'Sesson_end.php';
           </div>
         </div>
 
-        <div class="card">
+        <div class="card" onclick="redirect('invoice')">
           <div class="content">
             <div class="contentBx">
               <h3>Invoice<br /><span>nice</span></h3>
@@ -71,4 +48,9 @@ include 'Sesson_end.php';
       </div>
     </section>
   </body>
+  <script>
+    function redirect(page) {
+      window.location = page + '.php';
+    }
+  </script>
 </html>
