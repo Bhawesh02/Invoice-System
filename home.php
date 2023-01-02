@@ -1,13 +1,5 @@
 <?php
-session_start();
-function destroySesson(){
-  session_destroy();
-  header('Location: index.php');
-
-}
-if (isset($_GET['call_function'])) {
-  destroySesson();
-}
+include 'Sesson_end.php';
 ?>
 <html lang="en">
   <head>
