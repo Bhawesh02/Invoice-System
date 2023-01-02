@@ -1,6 +1,5 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Laila:wght@600&display=swap');
 * {
     margin: 0;
     padding: 0;
@@ -40,10 +39,10 @@
     font-size: 35px;
     font-family: "Montserrat";
     font-weight: normal;
-
   }
-  
-  
+  .logo h1 span {
+    font-weight: bold;
+  }
   header button span, .mobile-nav-toggle{
     display: none;
   }
@@ -69,15 +68,6 @@
   nav li a:hover{
     letter-spacing: 2px;
     transition: 1s;
-  }
-  h2{
-    text-align: center;
-    justify-content: center;
-    letter-spacing: 1.3px;
-    font-weight: bolder;
-    margin-top: 50px;
-    font-family: 'Laila';
-    font-size: 47px;
   }
   
   body{
