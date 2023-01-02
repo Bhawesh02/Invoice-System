@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 02, 2023 at 03:27 PM
+-- Generation Time: Jan 02, 2023 at 03:32 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -20,17 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `billing info`
 --
-
-DELIMITER $$
---
--- Procedures
---
-CREATE DEFINER=`root`@`localhost` PROCEDURE `recalculate_id` ()   Begin
-	set @row_num = 0;
-    UPDATE product set product_id = (@row_num:=@row_num+1);
-END$$
-
-DELIMITER ;
 
 -- --------------------------------------------------------
 
