@@ -12,18 +12,18 @@ if (mysqli_num_rows($result) >0) { // The query returned some results
     while ($row = mysqli_fetch_assoc($result)) { // Add the data for each row to the array
   $invoices[] = $row; } } 
   
-  $customerquery = "SELECT * From customer where users_id = " .$currentuser;
-  $customersdb = mysqli_query($conn, $customerquery);
-  $customers = array();
+$customerquery = "SELECT * From customer where users_id = " .$currentuser;
+$customersdb = mysqli_query($conn, $customerquery);
+$customers = array();
 
-if (mysqli_num_rows($result) >0) { // The query returned some results 
-    while ($row = mysqli_fetch_assoc($customersdb)) { // Add the data for each row to the array
-  $customers[] = $row; } } 
+if (mysqli_num_rows($customersdb) >0) { // The query returned some results 
+while ($row = mysqli_fetch_assoc($customersdb)) { // Add the data for each row to the array
+$customers[] = $row; } } 
   $productquery = "SELECT * From product where users_id = " .$currentuser;
   $productsdb = mysqli_query($conn, $productquery);
   $products = array();
 
-if (mysqli_num_rows($result) >0) { // The query returned some results 
+if (mysqli_num_rows($productsdb) >0) { // The query returned some results 
     while ($row = mysqli_fetch_assoc($productsdb)) { // Add the data for each row to the array
   $products[] = $row; } } 
 
@@ -33,22 +33,30 @@ if (mysqli_num_rows($result) >0) { // The query returned some results
     if(isset($_POST["add_invoice"]))
     {
         $cust_id=mysqli_real_escape_string($conn, $_POST['customer_id']);
-        $pro_id=mysqli_real_escape_string($conn, $_POST['product_id']);
-        $pro_qty=mysqli_real_escape_string($conn, $_POST['pro_qty']);
-
         $query1 = "INSERT INTO invoice_cust_user(users_id,customer_id) values ('$currentuser','$cust_id')";
-        if (mysqli_query($conn, $query1))
-        {
-            $query2 = "Set @max_id = 0;SELECT max(invoice_id) into @max_id from invoice_cust_user;INSERT INTO invoice_product(invoice_id,product_id,Num) VALUES (@max_id,'$pro_id','$pro_qty')";
-            if (mysqli_multi_query($conn, $query2))
-            {
-                header('Location: invoice.php');
-                exit;
-            }
-        }
+        mysqli_query($conn, $query1);
+        $no_of_product=mysqli_real_escape_string($conn, $_POST['no_of_product']);
+        for ($i=1; $i <= $no_of_product ; $i++) { 
+            $pro_id=mysqli_real_escape_string($conn, $_POST['product_id_'.$i]);
+            $pro_qty=mysqli_real_escape_string($conn, $_POST['pro_qty_'.$i]);
+           
+            $query2 = "Set @max_id = 0";
+             mysqli_query($conn, $query2);
+             $query2 = "SELECT max(invoice_id) into @max_id from invoice_cust_user";
+             mysqli_query($conn, $query2);
+             $query2 = "INSERT INTO invoice_product(invoice_id,product_id,Num) VALUES (@max_id,'$pro_id','$pro_qty')";
+             mysqli_query($conn, $query2);
+            
+            
+            
+        
+        
       
      
     }
+    header('Location: invoice.php');
+                exit;
+            }
     
   }
   
@@ -132,21 +140,7 @@ if (mysqli_num_rows($result) >0) { // The query returned some results
                 <input class="form-control " id="cu_email" placeholder="Customer Email" disabled>
             </div>
             <div id="products_to_add">
-            <div class="form-group">
-                <label for="Product_name" class="form-label">Product Name</label>
-                <select name="Product_name" class="form-control" onchange="pro_change(event)" id="add_Product_name" required>
-                    <option disabled value="" selected hidden>Product Name</option>
-                </select>
-                <input type = "number" name ="product_id" id="pro_id" hidden>
-            </div>
-            <div class="form-group">
-                <label for="Product_price" class="form-label">Product Price</label>
-                <input class="form-control " id="pro_price" placeholder="Product Price" disabled>
-            </div>
-            <div class="form-group">
-                <label for="Quantity" class="form-label">Quantity</label>
-                <input type="number" class="form-control" name="pro_qty" placeholder="Enter Quantity *" required>
-            </div>
+            <input type="number" value = 0 name="no_of_product" id="num_of_pro" hidden>
             </div>
             <div>
                 <button type="submit" name="add_invoice" class="submit_btn">Add Procduct!</button>

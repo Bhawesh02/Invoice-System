@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 02, 2023 at 06:35 PM
+-- Generation Time: Jan 03, 2023 at 01:05 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -51,7 +51,9 @@ CREATE TABLE `customer` (
 
 INSERT INTO `customer` (`customer_id`, `name`, `phone_number`, `email`, `users_id`) VALUES
 (1, 'c1', 465, 'asd@asd.com', 1),
-(2, 'Megha Agarwa', 123, 'as@sad.c', 1);
+(2, 'Megha Agarwa', 123, 'as@sad.c', 1),
+(3, 'B02', 111, '[value-3]', 1),
+(4, 'B02', 1111, '[value-3]', 1);
 
 -- --------------------------------------------------------
 
@@ -70,7 +72,24 @@ CREATE TABLE `invoice_cust_user` (
 --
 
 INSERT INTO `invoice_cust_user` (`invoice_id`, `users_id`, `customer_id`) VALUES
-(1, 1, 1);
+(1, 1, 1),
+(2, 1, 3),
+(9, 1, 2),
+(14, 1, 2),
+(15, 1, 2),
+(16, 1, 2),
+(17, 1, 2),
+(20, 1, 1),
+(21, 1, 1),
+(22, 1, 1),
+(23, 1, 1),
+(24, 1, 2),
+(25, 1, 2),
+(26, 1, 2),
+(27, 1, 2),
+(28, 1, 3),
+(29, 1, 4),
+(30, 1, 3);
 
 -- --------------------------------------------------------
 
@@ -86,6 +105,24 @@ CREATE TABLE `invoice_product` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
+-- Dumping data for table `invoice_product`
+--
+
+INSERT INTO `invoice_product` (`invoice_id`, `product_id`, `Num`, `price`) VALUES
+(1, 1, 2, '2462.00'),
+(1, 2, 5, '250000.00'),
+(2, 3, 2, '24.00'),
+(2, 2, 1, '50000.00'),
+(16, 1, 1, '1231.00'),
+(16, 1, 1, '1231.00'),
+(16, 1, 1, '1231.00'),
+(25, 1, 1, '1231.00'),
+(27, 1, 1, '1231.00'),
+(28, 1, 1, '1231.00'),
+(29, 1, 1, '1231.00'),
+(30, 3, 12, '144.00');
+
+--
 -- Triggers `invoice_product`
 --
 DELIMITER $$
@@ -95,9 +132,21 @@ END
 $$
 DELIMITER ;
 DELIMITER $$
-CREATE TRIGGER `add_total` AFTER INSERT ON `invoice_product` FOR EACH ROW BEGIN
-	INSERT into invoice_total(invoice_total.invoice_id,total_pro,total_amt) VALUES(new.invoice_id,(SELECT sum(invoice_product.num) from invoice_product where invoice_product.invoice_id = new.invoice_id ),(SELECT sum(invoice_product.price) from invoice_product where invoice_product.invoice_id = new.invoice_id ));
-END
+CREATE TRIGGER `add_total` AFTER INSERT ON `invoice_product` FOR EACH ROW BEGIN  
+DECLARE cut int;
+set cut = (SELECT count(*) from invoice_total where invoice_total.invoice_id = new.invoice_id);
+              IF (cut = 0)
+              THEN
+              INSERT into invoice_total(invoice_total.invoice_id,total_pro,total_amt) VALUES(new.invoice_id,(SELECT sum(invoice_product.num) from invoice_product where invoice_product.invoice_id = new.invoice_id ),(SELECT sum(invoice_product.price) from invoice_product where invoice_product.invoice_id = new.invoice_id ));
+     END IF;
+     IF (cut > 0)
+     THEN
+     UPDATE invoice_total
+SET total_pro = (SELECT sum(invoice_product.num) from invoice_product where invoice_product.invoice_id = new.invoice_id ),
+total_amt = (SELECT sum(invoice_product.price) from invoice_product where invoice_product.invoice_id = new.invoice_id )
+WHERE invoice_total.invoice_id = new.invoice_id;
+END IF;
+ END
 $$
 DELIMITER ;
 
@@ -112,6 +161,20 @@ CREATE TABLE `invoice_total` (
   `total_pro` int(11) NOT NULL,
   `total_amt` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `invoice_total`
+--
+
+INSERT INTO `invoice_total` (`invoice_id`, `total_pro`, `total_amt`) VALUES
+(1, 7, '252462.00'),
+(2, 3, '50024.00'),
+(16, 3, '3693.00'),
+(25, 1, '1231.00'),
+(27, 1, '1231.00'),
+(28, 1, '1231.00'),
+(29, 1, '1231.00'),
+(30, 12, '144.00');
 
 -- --------------------------------------------------------
 
@@ -211,13 +274,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `invoice_cust_user`
 --
 ALTER TABLE `invoice_cust_user`
-  MODIFY `invoice_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `invoice_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `product`

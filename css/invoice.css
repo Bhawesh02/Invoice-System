@@ -171,7 +171,9 @@
     resize:none;
   }
   
-  
+  #cu_id{
+    display: none;
+  }
   
   .focused > .form-label{
     opacity:1;
