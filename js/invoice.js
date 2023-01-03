@@ -1,4 +1,43 @@
 
+
+
+
+
+
+
+
+
+function cust_change(event) {
+	//console.log(event.target.value)
+  var cu_email = document.getElementById('cu_email');
+  var cu_id = document.getElementById('cu_id');
+
+  cu_email.setAttribute('placeholder',customers[event.target.value]["email"]);
+  cu_id.setAttribute('value',customers[event.target.value]["customer_id"]);
+  };
+
+  function pro_change(event) {
+	//console.log(event.target.value)
+  var pro_price = document.getElementById('pro_price');
+  var pro_id = document.getElementById('pro_id');
+
+  pro_price.setAttribute('placeholder',products[event.target.value]["price"]);
+  pro_id.setAttribute('value',products[event.target.value]["product_id"]);
+  };
+
+
+
+
+  $.each(customers, function(index) {
+	//console.log(customers[index]);
+	$('#add_customer_name').append("<option value="+index+">"+customers[index]["name"]+"</option>");
+  });
+  $.each(products, function(index) {
+	//console.log(products[index]);
+	$('#add_Product_name').append("<option value="+index+">"+products[index]["name"]+"</option>");
+  });
+
+
 var noOfclumb = 4;
 $(document).ready(function() {
 	//Only needed for the filename of export files.
@@ -26,7 +65,7 @@ $(document).ready(function() {
 
     $.each(invoices, function(index) {
         
-            console.log(invoices[index]);
+            //console.log(invoices[index]);
         //Create some data and insert it
 			var rowData = [];
 			var table = $('#invoices').DataTable();
@@ -100,5 +139,24 @@ $('#add_row_btn').on('click',function(){
 $('#popup_close').on('click',function(){
     $('#popup').css("display","none");
     $('#add_row_popup').css("display","none");
+
+});
+
+
+
+//focused
+$(function() {
+   
+    $(".form-control").on('focus', function(){
+
+        $(this).parents(".form-group").addClass('focused');
+
+    });
+
+    $(".form-control").on('blur', function(){
+
+        $(this).parents(".form-group").removeClass('focused');
+
+    });
 
 });
