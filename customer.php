@@ -109,7 +109,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           <th>Phone Number</th>
 
           <th style="text-align: center; width: 100px">
-            Add row
+            Add Customer
             <button
               type="button"
               data-func="dt-add"

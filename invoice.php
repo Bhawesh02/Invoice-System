@@ -55,7 +55,7 @@ if (mysqli_num_rows($result) >0) { // The query returned some results
         <th>Total Amount</th>
 
         <th style="text-align: center; width: 100px">
-          Add row
+          Add Invoice
           <button
             type="button"
             data-func="dt-add"

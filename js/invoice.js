@@ -39,7 +39,7 @@ $(document).ready(function() {
 			rowData.push(invoices[index]['total_pro']);
 			rowData.push(invoices[index]['total_amt']);
 			//Inserting the buttons ???
-			rowData.push('<button type="button" class="btn btn-primary btn-xs dt-edit" style="margin-right:16px;"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button>');
+			rowData.push('<button type="button" class="btn btn-primary btn-xs dt-edit" style="margin-right:16px;">View</button>');
 			//Looping over columns is possible
 			//var colCount = table.columns()[0].length;
 			//for(var i=0; i < colCount; i++){			}

@@ -108,7 +108,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           <th>MRP</th>
 
           <th style="text-align: center; width: 100px">
-            Add row
+            Add Product
             <button
               type="button"
               data-func="dt-add"
