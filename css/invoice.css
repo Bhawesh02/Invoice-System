@@ -197,7 +197,7 @@
   display: none;
   z-index: 999999999;
 }
-#add_row_popup,#edit_row_popup{
+#add_row_popup,#edit_row_popup,#confirm_view{
     display: none;
 }
 /* Modal Content (image) */

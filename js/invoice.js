@@ -70,7 +70,7 @@ $(document).ready(function() {
 			rowData.push(invoices[index]['total_pro']);
 			rowData.push(invoices[index]['total_amt']);
 			//Inserting the buttons ???
-			rowData.push('<button type="button" class="btn btn-primary btn-xs dt-edit" style="margin-right:16px;">View</button>');
+			rowData.push('');
 			//Looping over columns is possible
 			//var colCount = table.columns()[0].length;
 			//for(var i=0; i < colCount; i++){			}
@@ -94,31 +94,19 @@ $('#add_row_btn').on('click',function(){
 		$(this).on('click', function(evt){
 			$this = $(this);
             $('#popup').css("display","block");
-            $('#edit_row_popup').css("display","block");
-			//Only needed for the filename of export files.
-			//Normally set in the title tag of your page.
-			document.title='invoices';
-			// DataTable initialisation
-			$('#invoice').DataTable(
-			{
-			"dom": '<"dt-buttons"Bf><"clear">lirtp',
-			"paging": false,
-			"autoWidth": true,
-			"columnDefs": [
-				{ "orderable": false, "targets": noOfclumb }
-			],
-			"buttons": [
-				'colvis',
-				'copyHtml5',
-        		'csvHtml5',
-				'excelHtml5',
-        		'pdfHtml5',
-				'print'
-			]
-		}
-	);
+            $('#confirm_view').css("display","block");
+            var dtRow = $this.parents('tr');
+            var invoice_id = dtRow[0].cells[0].innerHTML;
+            $('#invoice_id').attr('value',invoice_id);
+            $(view_invoice).on('click',function(evt){
+                $('#confirm_view').css("display","none");
+                $('#edit_row_popup').css("display","block");
+                $('#edit_id').attr('value',invoice_id); 
+            });
+            
 		});
 	});
+    
 	//Delete buttons
 	$('.dt-delete').each(function () {
 		$(this).on('click', function(evt){

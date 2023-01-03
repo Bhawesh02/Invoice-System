@@ -149,8 +149,27 @@ if (mysqli_num_rows($productsdb) >0) { // The query returned some results
         
     </div>
 </div>
+<div id="confirm_view">
+  <div class="form-container modal-content">
+    <form  method="POST" class="form">
+      <div class="form-group">
+        <h4>Confirm View?</h4>
+        <input name="invoice_id" id="invoice_id" hidden>
+        <div>
+                <button type="submit" name="view_invoice" class="submit_btn" id="view_invoice">View Invoice!</button>
+            </div>
+      </div>
+    </form>
+  </div>
+</div>
     <div id="edit_row_popup">
     <div class="form-container modal-content">
+      <?php
+      if(isset($_POST["view_invoice"]))
+      {
+        echo "Hello";
+      }
+      ?>
         <form  method="POST" class="form">
         <div class="form-group">
                 <label for="id" class="form-label">invoice No</label>
@@ -158,7 +177,7 @@ if (mysqli_num_rows($productsdb) >0) { // The query returned some results
                 <input name="id" id="edit_id_h" hidden>
             </div>
             <div class="form-group">
-                <label for="name" class="form-label">invoice Name</label>
+                <label for="name" class="form-label">Customer Name</label>
                 <input type="text" class="form-control" id="edit_name" name="name" placeholder="Name *" tabindex="1" required>
             </div>
             <div class="form-group">
