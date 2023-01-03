@@ -1,8 +1,8 @@
 <?php
 include 'connect_db.php';
 include 'Sesson_end.php';
-        $currentuser=$_SESSION['id'];
-$query = "SELECT * FROM invoice where users_id = " . $currentuser ;
+$currentuser=$_SESSION['id'];
+$query = "SELECT invoice_cust_user.invoice_id, customer.name,invoice_total.total_pro ,invoice_total.total_amt FROM invoice_cust_user left join invoice_total on invoice_total.invoice_id = invoice_cust_user.invoice_id left join customer on customer.customer_id = invoice_cust_user.customer_id WHERE invoice_cust_user.users_id =  " . $currentuser ;
 $result = mysqli_query($conn, $query);
 
 $invoices = array();
@@ -51,8 +51,8 @@ if (mysqli_num_rows($result) >0) { // The query returned some results
       <tr>
         <th>No.</th>
         <th>Customer Name</th>
-        <th>Customer Phone Number</th>
-        <th>Product Name</th>
+        <th>Total No. of Products</th>
+        <th>Total Amount</th>
 
         <th style="text-align: center; width: 100px">
           Add row

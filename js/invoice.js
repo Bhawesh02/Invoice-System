@@ -26,7 +26,7 @@ $(document).ready(function() {
 
     $.each(invoices, function(index) {
         
-            //console.log(invoices[index]);
+            console.log(invoices[index]);
         //Create some data and insert it
 			var rowData = [];
 			var table = $('#invoices').DataTable();
@@ -36,8 +36,8 @@ $(document).ready(function() {
 			//Name
 			rowData.push(invoices[index]['name']);
 			//Amount column
-			rowData.push(invoices[index]['email']);
-			rowData.push(invoices[index]['phone_number']);
+			rowData.push(invoices[index]['total_pro']);
+			rowData.push(invoices[index]['total_amt']);
 			//Inserting the buttons ???
 			rowData.push('<button type="button" class="btn btn-primary btn-xs dt-edit" style="margin-right:16px;"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button>');
 			//Looping over columns is possible
