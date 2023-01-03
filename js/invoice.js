@@ -95,20 +95,28 @@ $('#add_row_btn').on('click',function(){
 			$this = $(this);
             $('#popup').css("display","block");
             $('#edit_row_popup').css("display","block");
-			var dtRow = $this.parents('tr');
-            console.log(dtRow[0].cells[1].innerHTML);
-			var cust_edit_id = dtRow[0].cells[0].innerHTML;
-			var cust_edit_name = dtRow[0].cells[1].innerHTML;
-			var cust_edit_email = dtRow[0].cells[2].innerHTML;
-			var cust_edit_pno = dtRow[0].cells[3].innerHTML;
-            $('#edit_name').attr('placeholder',cust_edit_name);
-            $('#edit_name').attr('value',cust_edit_name);
-			$('#edit_email').attr('placeholder',cust_edit_email);
-            $('#edit_email').attr('value',cust_edit_email);
-            $('#edit_id').attr('value',cust_edit_id);
-            $('#edit_id_h').attr('value',cust_edit_id);
-            $('#edit_phone_number').attr('placeholder',cust_edit_pno);
-            $('#edit_phone_number').attr('value',cust_edit_pno);
+			//Only needed for the filename of export files.
+			//Normally set in the title tag of your page.
+			document.title='invoices';
+			// DataTable initialisation
+			$('#invoice').DataTable(
+			{
+			"dom": '<"dt-buttons"Bf><"clear">lirtp',
+			"paging": false,
+			"autoWidth": true,
+			"columnDefs": [
+				{ "orderable": false, "targets": noOfclumb }
+			],
+			"buttons": [
+				'colvis',
+				'copyHtml5',
+        		'csvHtml5',
+				'excelHtml5',
+        		'pdfHtml5',
+				'print'
+			]
+		}
+	);
 		});
 	});
 	//Delete buttons
@@ -131,6 +139,7 @@ $('#add_row_btn').on('click',function(){
 $('#popup_close').on('click',function(){
     $('#popup').css("display","none");
     $('#add_row_popup').css("display","none");
+    $('#edit_row_popup').css("display","none");
 
 });
 

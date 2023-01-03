@@ -100,5 +100,7 @@ $('#add_row_btn').on('click',function(){
 $('#popup_close').on('click',function(){
     $('#popup').css("display","none");
     $('#add_row_popup').css("display","none");
+    $('#edit_row_popup').css("display","none");
+
 
 });
