@@ -8,7 +8,7 @@
 <header>
       <div class="inner flex">
         <div class="logo">
-          <h1><span>Company</span> name</h1>
+          <h1><span>A-Z</span>company</h1>
         </div>
         <button
           class="mobile-nav-toggle"

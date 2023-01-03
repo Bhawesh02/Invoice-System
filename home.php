@@ -9,7 +9,7 @@ include 'Sesson_end.php';
     
     <link rel="stylesheet" type="text/css" href="./css/home.css" />
     <link rel="stylesheet" type="text/css" href="./css/header.css" />
-    <title>Homme page</title>
+    <title>Home page</title>
   </head>
   <body>
     <?php
