@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 03, 2023 at 01:05 PM
+-- Generation Time: Jan 03, 2023 at 05:29 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -72,24 +72,7 @@ CREATE TABLE `invoice_cust_user` (
 --
 
 INSERT INTO `invoice_cust_user` (`invoice_id`, `users_id`, `customer_id`) VALUES
-(1, 1, 1),
-(2, 1, 3),
-(9, 1, 2),
-(14, 1, 2),
-(15, 1, 2),
-(16, 1, 2),
-(17, 1, 2),
-(20, 1, 1),
-(21, 1, 1),
-(22, 1, 1),
-(23, 1, 1),
-(24, 1, 2),
-(25, 1, 2),
-(26, 1, 2),
-(27, 1, 2),
-(28, 1, 3),
-(29, 1, 4),
-(30, 1, 3);
+(1, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -109,18 +92,8 @@ CREATE TABLE `invoice_product` (
 --
 
 INSERT INTO `invoice_product` (`invoice_id`, `product_id`, `Num`, `price`) VALUES
-(1, 1, 2, '2462.00'),
-(1, 2, 5, '250000.00'),
-(2, 3, 2, '24.00'),
-(2, 2, 1, '50000.00'),
-(16, 1, 1, '1231.00'),
-(16, 1, 1, '1231.00'),
-(16, 1, 1, '1231.00'),
-(25, 1, 1, '1231.00'),
-(27, 1, 1, '1231.00'),
-(28, 1, 1, '1231.00'),
-(29, 1, 1, '1231.00'),
-(30, 3, 12, '144.00');
+(1, 2, 3, '150000.00'),
+(1, 3, 2, '24.00');
 
 --
 -- Triggers `invoice_product`
@@ -167,14 +140,7 @@ CREATE TABLE `invoice_total` (
 --
 
 INSERT INTO `invoice_total` (`invoice_id`, `total_pro`, `total_amt`) VALUES
-(1, 7, '252462.00'),
-(2, 3, '50024.00'),
-(16, 3, '3693.00'),
-(25, 1, '1231.00'),
-(27, 1, '1231.00'),
-(28, 1, '1231.00'),
-(29, 1, '1231.00'),
-(30, 12, '144.00');
+(1, 5, '150024.00');
 
 -- --------------------------------------------------------
 
@@ -280,7 +246,7 @@ ALTER TABLE `customer`
 -- AUTO_INCREMENT for table `invoice_cust_user`
 --
 ALTER TABLE `invoice_cust_user`
-  MODIFY `invoice_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `invoice_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `product`
