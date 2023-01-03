@@ -144,7 +144,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
               
               <div>
-                  <button type="submit" name="add_customer" class="submit_btn">Add Procduct!</button>
+                  <button type="submit" name="add_customer" class="submit_btn">Add Customer!</button>
               </div>
           </form>
           
@@ -174,7 +174,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
               
               <div>
-                  <button type="submit" name="edit_customer" class="submit_btn">Edit Procduct!</button>
+                  <button type="submit" name="edit_customer" class="submit_btn">Edit Customer!</button>
               </div>
           </form>
           
