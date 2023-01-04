@@ -95,6 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <?php
     include 'header.php';
     ?>
+    <h2>CUSTOMERS</h2>
     <table
       id="customers"
       class="table table-striped table-bordered"

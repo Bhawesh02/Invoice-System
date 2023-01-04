@@ -68,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
   <!-- Display error message if there is one -->
 <?php if (isset($error)) {
-    echo "<p>$error</p>";
+  echo "<script>alert('$error')</script>";
 } ?>
     <section class="user">
         <div class="user_options-container">
@@ -98,7 +98,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                   </div>
                 </fieldset>
                 <div class="forms_buttons">
-                  <button type="button" class="forms_buttons-forgot">Forgot password?</button>
                   <input type="submit" name = "signin" value="Log In" class="forms_buttons-action">
                 </div>
               </form>

@@ -24,6 +24,7 @@
             data-visible="false"
             class="primary-navigation flex"
           >
+          <li><a href="home.php">Home</a></li>
             <li><span class="user_info"> <i class="fa-solid fa-user"></i> <?php echo $_SESSION['name']?></span></li>
             <li><a href="?call_function=1">Sign Out</a></li>
           </ul>

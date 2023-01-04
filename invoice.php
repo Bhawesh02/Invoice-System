@@ -95,6 +95,7 @@ if (mysqli_num_rows($productsdb) >0) { // The query returned some results
 <?php
   include 'header.php';
   ?>
+  <h2>INVOICES</h2>
   <table
     id="invoices"
     class="table table-striped table-bordered"
