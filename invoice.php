@@ -104,7 +104,7 @@ if (mysqli_num_rows($productsdb) >0) { // The query returned some results
   >
     <thead>
       <tr>
-        <th>No.</th>
+        <th>Invoice Number</th>
         <th>Customer Name</th>
         <th>Total No. of Products</th>
         <th>Total Amount</th>

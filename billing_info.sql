@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 04, 2023 at 03:05 AM
+-- Generation Time: Jan 04, 2023 at 03:11 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -44,7 +44,8 @@ INSERT INTO `customer` (`customer_id`, `name`, `phone_number`, `email`, `users_i
 (2, 'Megha Agarwa', 123, 'as@sad.c', 1),
 (3, 'B02', 111, 'u5oncyjovd@block521.com', 1),
 (4, 'B02', 1111, '9ya2y9j1ga@dishcatfish.com', 1),
-(5, 'Kunal Agarwal', 321, 'qw@asd.com', 1);
+(5, 'Kunal Agarwal', 321, 'qw@asd.com', 1),
+(6, 'B02', 96661, 'u5oncyjovd@block521.com', 2);
 
 -- --------------------------------------------------------
 
@@ -63,7 +64,8 @@ CREATE TABLE `invoice_cust_user` (
 --
 
 INSERT INTO `invoice_cust_user` (`invoice_id`, `users_id`, `customer_id`) VALUES
-(1, 1, 2);
+(1, 1, 2),
+(2, 2, 6);
 
 -- --------------------------------------------------------
 
@@ -84,7 +86,8 @@ CREATE TABLE `invoice_product` (
 
 INSERT INTO `invoice_product` (`invoice_id`, `product_id`, `Num`, `price`) VALUES
 (1, 2, 3, '150000.00'),
-(1, 3, 2, '24.00');
+(1, 3, 2, '24.00'),
+(2, 6, 23, '2300.00');
 
 --
 -- Triggers `invoice_product`
@@ -131,7 +134,8 @@ CREATE TABLE `invoice_total` (
 --
 
 INSERT INTO `invoice_total` (`invoice_id`, `total_pro`, `total_amt`) VALUES
-(1, 5, '150024.00');
+(1, 5, '150024.00'),
+(2, 23, '2300.00');
 
 -- --------------------------------------------------------
 
@@ -155,7 +159,8 @@ INSERT INTO `product` (`product_id`, `name`, `price`, `users_id`) VALUES
 (2, 'Casd', '50000.00', 1),
 (3, 'asd', '12.00', 1),
 (4, 'hjg', '12.00', 1),
-(5, '123', '123.00', 1);
+(5, '123', '123.00', 1),
+(6, 'Dettol', '100.00', 2);
 
 -- --------------------------------------------------------
 
@@ -231,19 +236,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `invoice_cust_user`
 --
 ALTER TABLE `invoice_cust_user`
-  MODIFY `invoice_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `invoice_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `users`
