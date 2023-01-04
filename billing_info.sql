@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 03, 2023 at 05:32 PM
+-- Generation Time: Jan 04, 2023 at 03:05 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -42,8 +42,9 @@ CREATE TABLE `customer` (
 INSERT INTO `customer` (`customer_id`, `name`, `phone_number`, `email`, `users_id`) VALUES
 (1, 'c1', 465, 'asd@asd.com', 1),
 (2, 'Megha Agarwa', 123, 'as@sad.c', 1),
-(3, 'B02', 111, '[value-3]', 1),
-(4, 'B02', 1111, '[value-3]', 1);
+(3, 'B02', 111, 'u5oncyjovd@block521.com', 1),
+(4, 'B02', 1111, '9ya2y9j1ga@dishcatfish.com', 1),
+(5, 'Kunal Agarwal', 321, 'qw@asd.com', 1);
 
 -- --------------------------------------------------------
 
@@ -230,7 +231,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `invoice_cust_user`
